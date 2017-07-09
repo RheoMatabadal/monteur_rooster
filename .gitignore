@@ -24,3 +24,7 @@ hs_err_pid*
 /MonteurRooster/build/
 /testwebapplication/nbproject/private/
 /testwebapplication/build/
+/GUIFormExamples/nbproject/private/
+/AudioVisualizer3D/nbproject/private/
+/AudioVisualizer3D/build/
+/AudioVisualizer3D/dist/
