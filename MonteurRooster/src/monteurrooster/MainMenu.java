@@ -4,12 +4,9 @@
  * and open the template in the editor.
  */
 package monteurrooster;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -23,6 +20,9 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2,size.height/2 - getHeight()/2 );
         currentDate(); // datum initialiseren
     }
     
@@ -33,12 +33,12 @@ public void currentDate(){
     int year = cal.get (Calendar.YEAR);
     int day = cal.get (Calendar.DAY_OF_MONTH);
     
-    lblDate.setText((month +1)+ "/" +day+ "/" +year);
+    jMenu2.setText((month +1)+ "/" +day+ "/" +year);
     int second = cal.get(Calendar.SECOND);
     int minute = cal.get(Calendar.MINUTE);
     int hour = cal.get(Calendar.HOUR);
     
-    lblTime.setText (hour + ":" +minute+":" + second);
+    jMenu3.setText (hour + ":" +minute+":" + second);
     
 }
     /**
@@ -54,8 +54,8 @@ public void currentDate(){
         btnAddMont1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        lblDate = new javax.swing.JMenu();
-        lblTime = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,11 +76,11 @@ public void currentDate(){
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
-        lblDate.setText("Date");
-        jMenuBar1.add(lblDate);
+        jMenu2.setText("Date");
+        jMenuBar1.add(jMenu2);
 
-        lblTime.setText("Time");
-        jMenuBar1.add(lblTime);
+        jMenu3.setText("Time");
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -89,7 +89,7 @@ public void currentDate(){
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(649, Short.MAX_VALUE)
+                .addContainerGap(719, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAddFil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddMont1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -98,7 +98,7 @@ public void currentDate(){
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(248, Short.MAX_VALUE)
+                .addContainerGap(288, Short.MAX_VALUE)
                 .addComponent(btnAddMont1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAddFil, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,8 +157,8 @@ public void currentDate(){
     private javax.swing.JButton btnAddFil;
     private javax.swing.JButton btnAddMont1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu lblDate;
-    private javax.swing.JMenu lblTime;
     // End of variables declaration//GEN-END:variables
 }
