@@ -12,6 +12,27 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+         <center><h1>Monteur toevoegen</h1>
+        <form action="/action_page.php">
+  Naam:<br>
+  <input type="text" name="naam" >
+  <br>
+  Voornaam:<br>
+  <input type="text" name="voornaam" >
+   <br>
+    Geboortedatum:<br>
+  <input type="date" name="geboortedatum" >
+  <br>
+  Adres:<br>
+  <input type="text" name="adres" >
+  <br>
+  Telefoon nummer:<br>
+  <input type="text" name="telefoonnummer" >
+  <br>
+  
+  <input type="submit" value="Submit">
+</form> 
+
+    </center>
     </body>
 </html>
