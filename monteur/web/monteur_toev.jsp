@@ -1,6 +1,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+ <%@ page import="java.sql.*" %> 
+<%@ page import="java.io.*" %> 
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,24 +19,74 @@
     </center>
     </body>
          <center><h1>Monteur toevoegen</h1>
-        <form  action="insert_mont.jsp">
+        <form  action="monteur_toev.jsp">
   Naam:<br>
   <input type="text" name="naam" placeholder="voer naam in">
   <br>
   Voornaam:<br>
   <input type="text" name="voornaam" placeholder="voer voornaam in">
    <br>
-    Geboortedatum:<br>
+   <%-- Geboortedatum:<br>
   <input type="date" name="geboortedatum" placeholder="voer geboortedatum in">
-  <br>
+  <br> --%>
   Adres:<br>
   <input type="text" name="adres" placeholder="voer adres in">
   <br>
-  Telefoon nummer:<br>
-  <input type="text" name="telefoonnummer" placeholder="voer telefoonnummer  in" >
+  Woonplaats:<br>
+  <input type="text" name="woonplaats" placeholder="voer woonplaats in">
   <br>
-  
+ 
   <input type="submit" value="toevoegen">
+  
+  <%
+     String naam = request.getParameter("naam");
+     String voornaam = request.getParameter("voornaam");
+    
+       String adres = request.getParameter("adres");
+       
+        String woonplaats = request.getParameter("woonplaats");
+     
+String connectionURL = "jdbc:mysql://localhost:3306/mont_db";
+Connection connection = null;
+PreparedStatement pstatement = null;
+       
+     Class.forName("com.mysql.jdbc.Driver").newInstance();
+          int updateQuery = 0;
+           if(naam!=null && voornaam!=null && adres!=null && woonplaats!=null ){
+	 		 // check if the text box having only blank spaces
+	     if(naam!="" && voornaam!="" && adres!="" && woonplaats!=null ) {
+                 try{
+                      connection = DriverManager.getConnection
+              (connectionURL, "root", "root");
+                       String queryString = "INSERT INTO monteurs (naam, voornaam, adres, woonplaats) VALUES (?,?,?,?)";
+                pstatement = connection.prepareStatement(queryString);
+              pstatement.setString(1, naam);
+			  pstatement.setString(2, voornaam);
+                       
+                          pstatement.setString(3, adres);
+                          pstatement.setString(4, woonplaats);
+                         
+                           updateQuery = pstatement.executeUpdate();
+                            if (updateQuery != 0) { %>
+	           <br>
+	           <TABLE 
+		      <tr><th>Monteur is toegevoegd.</th></tr>
+		   </table>
+              <%
+              }
+            } 
+            catch (Exception ex) {
+            out.println("Error: Monteur kon niet worden toegevoegd");
+   
+               }
+            finally {
+                // close all the connections.
+                pstatement.close();
+                connection.close();
+            }
+	  }
+	}
+%>
 </form> 
 
     </center>
