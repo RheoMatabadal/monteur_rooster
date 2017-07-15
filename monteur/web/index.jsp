@@ -55,8 +55,10 @@
     <body>
     <center>
         <h1>Monteur Rooster</h1>
-        <button class="button" style="vertical-align: middel"><span>Medewerker Toevoegen</span></button>
-        <button class="button" style="vertical-align: middel"><span>Filiaal Toevoegen</span></button>
+        
+        <a href="monteur_toev.jsp">
+            <button class="button" style="vertical-align: middel"><span>Monteur Toevoegen</span></button></a>
+            <a href="filiaal_toev.jsp">    <button class="button" style="vertical-align: middel"><span>Filiaal Toevoegen</span></button></a>
            <button class="button" style="vertical-align: middel"><span>Rooster</span></button>
     </center>
     </body>
